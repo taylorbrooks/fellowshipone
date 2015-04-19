@@ -1,4 +1,4 @@
-module FellowshipOne
+module Fellowshipone
   class Client
     module Contribution
 
@@ -6,7 +6,7 @@ module FellowshipOne
 
       end
 
-      def contribution(id)
+      def get_contribution(id)
         get("/giving/v1/contributionreceipts/#{id}.json")
       end
 
@@ -14,8 +14,8 @@ module FellowshipOne
         get("/giving/v1/contributionreceipts/new.json")
       end
 
-      def create_contribution(json_body)
-        post("/giving/v1/contributionreceipts.json", json_body)
+      def create_contribution(contribution_params)
+        post("/giving/v1/contributionreceipts.json", contribution_params)
       end
 
     end

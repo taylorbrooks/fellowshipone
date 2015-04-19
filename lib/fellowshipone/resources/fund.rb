@@ -1,4 +1,4 @@
-module FellowshipOne
+module Fellowshipone
   class Client
     module Fund
 

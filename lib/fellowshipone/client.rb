@@ -1,14 +1,17 @@
 require 'faraday'
 require 'faraday_middleware'
 require 'simple_oauth'
+require 'json'
 
-Dir[File.expand_path('../client/*.rb', __FILE__)].each{|f| require f}
+Dir[File.expand_path('../resources/*.rb', __FILE__)].each{|f| require f}
 
-module FellowshipOne
+module Fellowshipone
   class Client
-    include FellowshipOne::Client::Contribution
-    include FellowshipOne::Client::Fund
-    include FellowshipOne::Client::Person
+    include Fellowshipone::Client::Communication
+    include Fellowshipone::Client::Contribution
+    include Fellowshipone::Client::Fund
+    include Fellowshipone::Client::Household
+    include Fellowshipone::Client::Person
 
     attr_reader :church_code, :consumer_key, :consumer_secret, :token, :secret
 
@@ -55,9 +58,10 @@ module FellowshipOne
 
     def connection
       Faraday.new(url: "https://#{church_code}.fellowshiponeapi.com", headers: { accept: 'application/json' }) do |connection|
-        connection.request  :oauth, oauth_data
         connection.request  :json
+        connection.request  :oauth, oauth_data
         connection.response :logger
+        connection.use      FaradayMiddleware::Mashify
         connection.response :json
         connection.adapter  Faraday.default_adapter
       end

@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    fellowshipone (0.0.1)
+    fellowshipone (1.0.0)
       faraday
       faraday_middleware
       json

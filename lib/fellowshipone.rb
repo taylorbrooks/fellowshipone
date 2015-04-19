@@ -1,4 +1,1 @@
-require_relative 'fellowship_one/client.rb'
-
-module FellowshipOne
-end
+require_relative 'fellowshipone/client.rb'
