@@ -2,7 +2,7 @@ $:.push File.expand_path("../lib", __FILE__)
 
 Gem::Specification.new do |s|
   s.name              = 'fellowshipone'
-  s.version           = '1.0.0'
+  s.version           = '1.0.1'
   s.authors           = ['Taylor Brooks']
   s.email             = ['tbrooks@gmail.com']
   s.homepage          = 'https://github.com/taylorbrooks/fellowshipone'
@@ -20,6 +20,7 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency "faraday"
   s.add_runtime_dependency "faraday_middleware"
   s.add_runtime_dependency "simple_oauth"
+  s.add_runtime_dependency "hashie"
   s.add_runtime_dependency "json"
 
   s.files         = `git ls-files`.split("\n").delete_if { |f| !(f =~ /^examples/).nil? }
