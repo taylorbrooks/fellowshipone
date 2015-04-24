@@ -22,6 +22,10 @@ module Fellowshipone
         get("/v1/People/Search.json?searchfor=#{name}&communication=#{email}").results
       end
 
+      def search_for_person_by_household(household_id)
+        get("/v1/People/Search.json?hsid=#{household_id}").results
+      end
+
     end
   end
 end
