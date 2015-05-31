@@ -19,7 +19,7 @@ module Fellowshipone
       end
 
       def update_contribution(contribution_id, contribution_params)
-        put("giving/v1/contributionreceipts/#{contribution_id}.json", contribution_params)
+        put("/giving/v1/contributionreceipts/#{contribution_id}.json", contribution_params)
       end
 
     end
