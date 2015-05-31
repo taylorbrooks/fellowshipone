@@ -36,13 +36,13 @@ module Fellowshipone
       end.body
     end
 
-    def put(url, options = {})
+    def put(path, options = {})
       connection.put do |req|
         req.url path
       end.body
     end
 
-    def delete(url, options = {})
+    def delete(path, options = {})
       connection.delete do |req|
         req.url path
       end.body
