@@ -18,6 +18,10 @@ module Fellowshipone
         post("/giving/v1/contributionreceipts.json", contribution_params)
       end
 
+      def update_contribution(contribution_params)
+        put("giving/v1/contributionreceipts/#{id}.json", contribution_params)
+      end
+
     end
   end
 end
