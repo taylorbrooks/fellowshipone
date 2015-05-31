@@ -6,8 +6,8 @@ module Fellowshipone
 
       end
 
-      def get_contribution(id)
-        get("/giving/v1/contributionreceipts/#{id}.json")
+      def get_contribution(contribution_id)
+        get("/giving/v1/contributionreceipts/#{contribution_id}.json")
       end
 
       def new_contribution
@@ -18,8 +18,8 @@ module Fellowshipone
         post("/giving/v1/contributionreceipts.json", contribution_params)
       end
 
-      def update_contribution(contribution_params)
-        put("giving/v1/contributionreceipts/#{id}.json", contribution_params)
+      def update_contribution(contribution_id, contribution_params)
+        put("giving/v1/contributionreceipts/#{contribution_id}.json", contribution_params)
       end
 
     end
