@@ -12,6 +12,7 @@ module Fellowshipone
     include Fellowshipone::Client::Fund
     include Fellowshipone::Client::Household
     include Fellowshipone::Client::Person
+    include Fellowshipone::Client::PledgeDrive
 
     attr_reader :church_code, :consumer_key, :consumer_secret, :token, :secret
 
