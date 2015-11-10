@@ -22,6 +22,11 @@ module Fellowshipone
         put("/giving/v1/contributionreceipts/#{contribution_id}.json", contribution_params)
       end
 
+      def search_contributions( params = {} )
+        params = Addressable::URI.form_encode(params)
+        get("/giving/v1/contributionreceipts/search.json?#{params}")
+      end
+
     end
   end
 end
