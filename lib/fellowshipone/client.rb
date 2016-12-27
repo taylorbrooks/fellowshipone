@@ -14,7 +14,7 @@ module Fellowshipone
     include Fellowshipone::Client::Person
     include Fellowshipone::Client::PledgeDrive
 
-    attr_reader :church_code, :consumer_key, :consumer_secret, :token, :secret, logger
+    attr_reader :church_code, :consumer_key, :consumer_secret, :token, :secret, :logger
 
     def initialize(church_code, consumer_key, consumer_secret, token, secret, logger = false)
       @church_code     = church_code
