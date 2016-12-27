@@ -14,14 +14,15 @@ module Fellowshipone
     include Fellowshipone::Client::Person
     include Fellowshipone::Client::PledgeDrive
 
-    attr_reader :church_code, :consumer_key, :consumer_secret, :token, :secret
+    attr_reader :church_code, :consumer_key, :consumer_secret, :token, :secret, logger
 
-    def initialize(church_code, consumer_key, consumer_secret, token, secret)
+    def initialize(church_code, consumer_key, consumer_secret, token, secret, logger = false)
       @church_code     = church_code
       @consumer_key    = consumer_key
       @consumer_secret = consumer_secret
       @token           = token
       @secret          = secret
+      @logger          = logger
     end
 
     def get(path, options={})
@@ -62,7 +63,7 @@ module Fellowshipone
       Faraday.new(url: "https://#{church_code}.fellowshiponeapi.com", headers: { accept: 'application/json' }) do |connection|
         connection.request  :json
         connection.request  :oauth, oauth_data
-        connection.response :logger
+        connection.response :logger if logger
         connection.use      FaradayMiddleware::Mashify
         connection.response :json
         connection.adapter  Faraday.default_adapter

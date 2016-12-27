@@ -2,10 +2,6 @@ module Fellowshipone
   class Client
     module Contribution
 
-      def contributions
-
-      end
-
       def get_contribution(contribution_id)
         get("/giving/v1/contributionreceipts/#{contribution_id}.json")
       end
@@ -22,8 +18,16 @@ module Fellowshipone
         put("/giving/v1/contributionreceipts/#{contribution_id}.json", contribution_params)
       end
 
-      def search_contributions( params = {} )
-        params = Addressable::URI.form_encode(params)
+      # startReceivedDate, endReceivedDate, page, individualID, householdID, recordsPerPage
+      def search_contributions(person_id: nil, household_id: nil, start_date: nil, end_date: nil, page: 1)
+        options = {recordsPerPage: 500}
+        options.merge!(page: page)                    if page
+        options.merge!(individualID: individual_id)   if individual_id
+        options.merge!(householdID: household_id)     if household_id
+        options.merge!(startReceivedDate: start_date) if start_date
+        options.merge!(endReceivedDate: end_date)     if end_date
+
+        params = Addressable::URI.form_encode(options)
         get("/giving/v1/contributionreceipts/search.json?#{params}")
       end
 
