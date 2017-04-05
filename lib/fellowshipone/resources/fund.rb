@@ -3,7 +3,8 @@ module Fellowshipone
     module Fund
 
       def funds
-        get('/giving/v1/funds')
+        response = get('/giving/v1/funds')
+        Fellowshipone::Fund.format(response)
       end
 
       def fund(id)

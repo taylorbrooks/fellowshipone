@@ -4,6 +4,7 @@ require 'simple_oauth'
 require 'json'
 
 Dir[File.expand_path('../resources/*.rb', __FILE__)].each{|f| require f}
+Dir[File.expand_path('../responses/*.rb', __FILE__)].each{|f| require f}
 
 module Fellowshipone
   class Client
@@ -16,7 +17,7 @@ module Fellowshipone
 
     attr_reader :church_code, :consumer_key, :consumer_secret, :token, :secret, :logger
 
-    def initialize(church_code, consumer_key, consumer_secret, token, secret, logger = false)
+    def initialize(church_code:, consumer_key:, consumer_secret:, token:, secret:, logger: false)
       @church_code     = church_code
       @consumer_key    = consumer_key
       @consumer_secret = consumer_secret
