@@ -18,8 +18,17 @@ module Fellowshipone
         post("/v1/People.json", person_params.to_json)
       end
 
-      def search_for_person(name, email)
-        get("/v1/People/Search.json?searchfor=#{name}&communication=#{email}").results
+      def search_for_person(name: nil, email: nil)
+        options = {}
+        options.merge!(searchfor: name)      if name
+        options.merge!(communication: email) if email
+
+        params = Addressable::URI.form_encode(options)
+        get("/v1/People/Search.json?#{params}").results
+      end
+
+      def search_people_by_date(created_at)
+        get("/v1/People/Search.json?createdDate=#{created_at}").results
       end
 
       def search_for_person_by_household(household_id)
