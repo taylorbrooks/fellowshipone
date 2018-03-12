@@ -26,36 +26,24 @@ module Fellowshipone
       @logger          = logger
     end
 
-    def get(path, options={})
-      connection.get do |req|
-        req.url(path, options)
-      end.body
+    def get(path, options = {})
+      connection.get(path, options).body
     end
 
-    def post(path, req_body)
-      connection.post do |req|
-        req.url(path)
-        req.body = req_body
-      end.body
+    def post(path, options = {})
+      connection.post(path, options).body
     end
 
-    def put(path, req_body)
-      connection.put do |req|
-        req.url path
-        req.body = req_body
-      end
+    def put(path, options = {})
+      connection.put(path, options).body
     end
 
     def delete(path, options = {})
-      connection.delete do |req|
-        req.url path
-      end.body
+      connection.delete(path, options).body
     end
 
     def save
-      connection.put do |req|
-        req.url path
-      end.body
+      connection.put(path, {}).body
     end
 
     private
