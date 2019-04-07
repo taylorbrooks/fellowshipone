@@ -1,7 +1,10 @@
 module Fellowshipone
-  class Fund
+  class SubFund
     def self.format(res)
-      response = res['funds']['fund']
+      return nil if res['subFunds'].nil?
+
+      response = res['subFunds']['subFund']
+
       if response.is_a?(Array)
         response.map{|fund| format_fund(fund) }
       else
@@ -11,8 +14,8 @@ module Fellowshipone
 
     def self.format_fund(fund)
       OpenStruct.new(
-        id:   fund["@id"],
-        name: fund["name"],
+        id:   fund['@id'],
+        name: fund['name'],
       )
     end
   end

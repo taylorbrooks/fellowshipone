@@ -12,7 +12,8 @@ module Fellowshipone
       end
 
       def subfunds(fund_id)
-        get("/giving/v1/funds/#{fund_id}/subfunds")
+        response = get("/giving/v1/funds/#{fund_id}/subfunds")
+        Fellowshipone::SubFund.format(response)
       end
 
     end
