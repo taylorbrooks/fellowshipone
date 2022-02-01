@@ -1,2 +1,3 @@
-require_relative 'fellowshipone/client.rb'
-require_relative 'fellowshipone/connection.rb'
+require_relative 'fellowshipone/client'
+require_relative 'fellowshipone/connection'
+require_relative 'fellowshipone/error'
