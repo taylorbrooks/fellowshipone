@@ -12,7 +12,7 @@ Installing the gem
 
 To add it to your Gemfile
 
-    gem 'fellowshipone', require: 'fellowshipone'
+    gem 'fellowshipone', '3.0.0'
 
 ## Additional resources
 
@@ -23,10 +23,9 @@ To add it to your Gemfile
 ## License
 
 This project is released under the MIT license (see LICENSE).
-
 This project is maintained by Taylor Brooks (https://github.com/taylorbrooks).
 
 
 ## Want to Contribute?
 
-If you would like to get involved in this project, then please fork the project. Make changes, add features, write some tests, and then send a pull request. 
+If you would like to get involved in this project, then please fork the project. Make changes, add features, write some tests, and then send a pull request.
