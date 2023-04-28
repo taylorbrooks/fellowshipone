@@ -1,3 +1,5 @@
+require 'addressable/uri'
+
 module Fellowshipone
   class Client
     module Person

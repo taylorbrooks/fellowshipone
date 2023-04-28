@@ -52,7 +52,7 @@ module Fellowshipone
         connection.request  :json
         connection.use      FaradayMiddleware::BingbongOAuth, oauth_data
         connection.response :logger if logger
-        connection.use      FaradayMiddleware::Mashify
+        connection.use      FaradayMiddleware::BingbongHash
         connection.use      FaradayMiddleware::FellowshiponeErrorHandler
         connection.response :json
         connection.adapter  Faraday.default_adapter
