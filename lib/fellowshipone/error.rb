@@ -9,9 +9,8 @@ module Fellowshipone
   class Unauthorized < Error; end
 end
 
-require 'faraday'
 module FaradayMiddleware
-  class FellowshiponeErrorHandler < Faraday::Response::Middleware
+  class FellowshiponeErrorHandler < Faraday::Middleware
     ERROR_STATUSES = 400..600
 
     def on_complete(env)

@@ -1,5 +1,4 @@
 require 'faraday'
-require 'faraday_middleware'
 require 'simple_oauth'
 require 'json'
 
@@ -51,7 +50,7 @@ module Fellowshipone
     def connection
       Faraday.new(url: "https://#{church_code}.fellowshiponeapi.com", headers: { accept: 'application/json' }) do |connection|
         connection.request  :json
-        connection.request  :oauth, oauth_data
+        connection.use      FaradayMiddleware::BingbongOAuth, oauth_data
         connection.response :logger if logger
         connection.use      FaradayMiddleware::Mashify
         connection.use      FaradayMiddleware::FellowshiponeErrorHandler
